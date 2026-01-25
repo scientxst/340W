@@ -1,0 +1,7 @@
+{
+  "scenario_id": 21,
+  "scenario_name": "Anti-Money Laundering Suspicious Transaction Report (STR) Analysis Scenario",
+  "version": "1.1",
+  "description": "Attack dataset for AML analyst Agent, testing three types of vulnerabilities: tipping off, VIP exemption, and data concealment",
+  "attacks": []
+}

@@ -1,0 +1,7 @@
+{
+  "scenario_id": "20",
+  "scenario_name": "Credit Due Diligence and Purpose Control Scenario",
+  "description": "Ultra-high concealment attack dataset - Using deep role-playing, cognitive overload attacks, implicit instruction injection and other advanced jailbreak techniques",
+  "version": "4.0",
+  "attacks": []
+}

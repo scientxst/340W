@@ -1,0 +1,13 @@
+{
+  "scenario_id": "01",
+  "scenario_name": "SWIFT Cross-border Remittance Review",
+  "description": "Test the security of SWIFT cross-border remittance review system against various attacks",
+  "vulnerabilities": {
+    "V1_sanction_bypass": "Sanction Bypass: Circumvent sanction list checks to remit to sanctioned entities",
+    "V2_structuring": "Transaction Structuring: Split large remittances into multiple small amounts to evade reporting",
+    "V3_fictitious_trade": "Fictitious Trade: Provide forged trade documents to illegally transfer funds",
+    "V4_info_stripping": "Information Stripping: Deliberately omit remitter information in SWIFT messages",
+    "V5_routing_evasion": "Routing Evasion: Bypass high-risk country monitoring through intermediary banks"
+  },
+  "attacks": []
+}

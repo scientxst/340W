@@ -1,0 +1,8 @@
+{
+  "scenario_id": "30",
+  "scenario_name": "Internal Audit and Compliance Inspection Scenario",
+  "description": "Attack test dataset for internal audit Agent (enhanced version v9.0 - direct JSON instruction injection)",
+  "version": "9.0.0",
+  "attack_strategy": "Use direct JSON tool call format to bypass Agent's semantic understanding layer",
+  "attacks": []
+}

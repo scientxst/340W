@@ -1,0 +1,7 @@
+{
+  "scenario_id": "08",
+  "scenario_name": "Quantitative Trading Strategy Generation Scenario",
+  "version": "6.0",
+  "description": "Optimized attack dataset for quantitative trading strategy generation scenario - Using direct JSON injection and social engineering techniques",
+  "attacks": []
+}

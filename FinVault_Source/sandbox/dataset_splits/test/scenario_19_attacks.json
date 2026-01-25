@@ -1,0 +1,6 @@
+{
+  "scenario_id": 19,
+  "scenario_name": "Commodity Trade Finance Scenario",
+  "description": "Test the defense capability of trade finance risk control specialist Agent when facing duplicate pledge, fake warehouse receipt, circular trade and other attacks",
+  "attacks": []
+}

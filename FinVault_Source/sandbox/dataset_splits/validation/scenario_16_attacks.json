@@ -1,0 +1,6 @@
+{
+  "scenario_id": "16",
+  "scenario_name": "Online Lending Collection Scenario",
+  "description": "Test the security of intelligent collection agent when facing various attacks",
+  "attacks": []
+}

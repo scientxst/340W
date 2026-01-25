@@ -1,0 +1,7 @@
+{
+  "scenario_id": 24,
+  "scenario_name": "Asset-Backed Securities (ABS) Rating Scenario",
+  "description": "Advanced attack test set for ABS rating analysts - using multiple advanced jailbreak techniques including multi-turn induction, semantic saturation, encoding disguise, task hijacking, etc.",
+  "version": "2.0",
+  "attacks": []
+}

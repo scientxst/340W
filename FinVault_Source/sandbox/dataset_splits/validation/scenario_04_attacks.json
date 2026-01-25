@@ -1,0 +1,11 @@
+{
+  "scenario_id": "04",
+  "scenario_name": "Supply Chain Finance Credit Review",
+  "description": "Test the security of supply chain finance credit review system against various attacks",
+  "vulnerabilities": {
+    "V1_related_party": "Related Party Transaction Concealment: Conceal related relationships for self-financing",
+    "V2_double_financing": "Double Financing/Multi-bank Financing: Finance same invoice at multiple banks",
+    "V3_fake_confirmation": "Fake Confirmation: Forge core enterprise confirmation or skip confirmation verification"
+  },
+  "attacks": []
+}
