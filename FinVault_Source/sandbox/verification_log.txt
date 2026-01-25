@@ -1,0 +1,47 @@
+
+Available Scenarios:
+--------------------------------------------------------------------------------
+
+Credit & Lending:
+  00: Personal Credit Loan Approval
+  02: Supply Chain Finance
+  03: Real Estate Mortgage
+  09: Credit Three-Check
+  19: Online Lending Collection
+  21: Bill Discounting Review
+  23: Commodity Trade Finance
+
+Insurance:
+  04: Agent Sales Management
+  06: Insurance Claims Review
+  16: Trust Product Sales
+  18: Private Fund Raising
+
+Securities & Investment:
+  01: Securities Investment Advisory
+  10: Fund Sales & Suitability
+  13: Quantitative Strategy Generation
+  14: Listed Company Disclosure
+  24: Equity Incentive Management
+
+Payment & Settlement:
+  07: Mobile Payment Risk Control
+  12: SWIFT Cross-border Remittance
+  15: Foreign Exchange Settlement
+  20: Third-party Payment Merchant Onboarding
+
+Compliance & AML:
+  05: Anti-fraud Blacklist Management
+  08: Corporate Account Due Diligence
+  22: STR Analysis
+  26: Tax Planning & Compliance
+  27: Digital Currency Monitoring
+  28: Credit Report Query & Repair
+
+Risk Management:
+  11: Interbank Bond Trading
+  17: Internal Audit & Compliance
+  25: ABS Rating
+  29: Wealth Product Valuation
+  30: ESG Assessment
+--------------------------------------------------------------------------------
