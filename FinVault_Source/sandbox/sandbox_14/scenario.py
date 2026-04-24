@@ -11,7 +11,7 @@ from .config import (
     VULNERABILITY_DEFINITIONS,
     TOOL_PERMISSIONS,
     DEFAULT_CASES,
-    ATTACK_CASES
+    ATTACK_CASES,
 )
 from .environment import DisclosureEnvironment
 from .state import DisclosureState
@@ -22,7 +22,7 @@ from .reward import DisclosureRewardCalculator
 @register_scenario("14")
 class Scenario(ScenarioInterface):
     """Scenario 14: Listed Company Information Disclosure Assistant"""
-    
+
     @classmethod
     def get_meta(cls) -> ScenarioMeta:
         """Get scenario metadata"""
@@ -33,34 +33,34 @@ class Scenario(ScenarioInterface):
             industry="Securities/Listed Company",
             vulnerabilities=list(VULNERABILITY_DEFINITIONS.keys()),
             tools=list(TOOL_PERMISSIONS.keys()),
-            version="1.0.0"
+            version="1.0.0",
         )
-    
+
     @classmethod
     def get_environment_class(cls) -> Type[DisclosureEnvironment]:
         """Get environment class"""
         return DisclosureEnvironment
-    
+
     @classmethod
     def get_state_class(cls) -> Type[DisclosureState]:
         """Get state class"""
         return DisclosureState
-    
+
     @classmethod
     def get_vulnerability_checker_class(cls) -> Type[DisclosureVulnerabilityChecker]:
         """Get vulnerability checker class"""
         return DisclosureVulnerabilityChecker
-    
+
     @classmethod
     def get_reward_calculator_class(cls) -> Type[DisclosureRewardCalculator]:
         """Get reward calculator class"""
         return DisclosureRewardCalculator
-    
+
     @classmethod
     def get_default_cases(cls) -> Dict[str, Any]:
         """Get default test cases"""
         return DEFAULT_CASES
-    
+
     @classmethod
     def get_attack_cases(cls) -> Dict[str, Any]:
         """Get attack test cases"""
@@ -69,28 +69,32 @@ class Scenario(ScenarioInterface):
         if isinstance(attack_data, dict) and "attacks" in attack_data:
             return {"scenarios": attack_data["attacks"]}
         return attack_data
-    
+
     @classmethod
     def get_vulnerability_definitions(cls) -> Dict[str, Any]:
         """Get vulnerability definitions"""
         return VULNERABILITY_DEFINITIONS
-    
+
     @classmethod
     def get_tool_definitions(cls) -> Dict[str, Any]:
         """Get tool definitions"""
         return TOOL_PERMISSIONS
-    
+
     @classmethod
     def get_system_prompt(cls, with_safety: bool = False) -> str:
         """Get system prompt"""
         try:
-            from prompts.prompt_14 import get_system_prompt, get_system_prompt_with_safety
+            from prompts.prompt_14 import (
+                get_system_prompt,
+                get_system_prompt_with_safety,
+            )
+
             if with_safety:
                 return get_system_prompt_with_safety()
             return get_system_prompt()
         except ImportError:
             return cls._get_default_prompt(with_safety)
-    
+
     @classmethod
     def _get_default_prompt(cls, with_safety: bool = False) -> str:
         """Get default prompt"""
@@ -121,7 +125,7 @@ Please call tools in JSON format: {"tool": "tool_name", "args": {parameters}}
 3. Forbidden to use exaggerated or misleading language
 """
         return base_prompt
-    
+
     @classmethod
     def create_environment(cls) -> DisclosureEnvironment:
         """Create environment instance"""

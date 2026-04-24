@@ -7,6 +7,7 @@ This file implements the ScenarioInterface, providing a unified scenario access 
 
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from typing import Any, Dict, Type
@@ -24,7 +25,7 @@ from .config import (
     DEFAULT_CASES,
     get_attack_cases,
     VULNERABILITY_DEFINITIONS,
-    TOOL_PERMISSIONS
+    TOOL_PERMISSIONS,
 )
 
 # Import prompt module
@@ -32,7 +33,7 @@ from prompts.prompt_20 import (
     SYSTEM_PROMPT,
     SAFETY_PROMPT,
     get_system_prompt,
-    get_system_prompt_with_safety
+    get_system_prompt_with_safety,
 )
 
 # Scenario basic information
@@ -66,7 +67,7 @@ VULNERABILITIES_SUMMARY = """
 class Scenario(ScenarioInterface):
     """
     Scenario 20: Credit Due Diligence and Purpose Control Scenario
-    
+
     Implements ScenarioInterface standard interface, providing:
     - Scenario metadata
     - Environment class, state class, vulnerability detector, reward calculator
@@ -74,7 +75,7 @@ class Scenario(ScenarioInterface):
     - Vulnerability definitions, tool definitions
     - System prompts
     """
-    
+
     @classmethod
     def get_meta(cls) -> ScenarioMeta:
         """Get scenario metadata"""
@@ -92,39 +93,39 @@ class Scenario(ScenarioInterface):
             vulnerabilities=list(VULNERABILITY_DEFINITIONS.keys()),
             tools=list(TOOL_PERMISSIONS.keys()),
             default_cases_count=len(DEFAULT_CASES.get("scenarios", [])),
-            attack_cases_count=len(get_attack_cases().get("scenarios", []))
+            attack_cases_count=len(get_attack_cases().get("scenarios", [])),
         )
-    
+
     @classmethod
     def get_environment_class(cls) -> Type:
         """Get environment class"""
         return CreditThreeChecksEnvironment
-    
+
     @classmethod
     def get_state_class(cls) -> Type:
         """Get state class"""
         return CreditThreeChecksState
-    
+
     @classmethod
     def get_vulnerability_checker_class(cls) -> Type:
         """Get vulnerability checker class"""
         return CreditThreeChecksVulnerabilityChecker
-    
+
     @classmethod
     def get_reward_calculator_class(cls) -> Type:
         """Get reward calculator class"""
         return CreditThreeChecksRewardCalculator
-    
+
     @classmethod
     def get_default_cases(cls) -> Dict[str, Any]:
         """Get default test cases"""
         return DEFAULT_CASES
-    
+
     @classmethod
     def get_attack_cases(cls) -> Dict[str, Any]:
         """Get attack test cases"""
         return get_attack_cases()
-    
+
     @classmethod
     def get_vulnerability_definitions(cls) -> Dict[str, Any]:
         """Get vulnerability definitions"""
@@ -135,59 +136,59 @@ class Scenario(ScenarioInterface):
                 "category": vuln_def.get("category", ""),
                 "description": vuln_def.get("description", ""),
                 "severity": vuln_def.get("severity", 8),
-                "penalty": vuln_def.get("penalty", -50)
+                "penalty": vuln_def.get("penalty", -50),
             }
             for vuln_id, vuln_def in VULNERABILITY_DEFINITIONS.items()
         }
-    
+
     @classmethod
     def get_tool_definitions(cls) -> Dict[str, Any]:
         """Get tool definitions"""
         return TOOL_PERMISSIONS
-    
+
     @classmethod
     def get_system_prompt(cls, with_safety: bool = False) -> str:
         """
         Get system prompt
-        
+
         Args:
             with_safety: Whether to include safety protection prompt
-            
+
         Returns:
             System prompt string
         """
         if with_safety:
             return get_system_prompt_with_safety()
         return get_system_prompt()
-    
+
     @classmethod
     def get_scenario_config(cls):
         """Get scenario configuration"""
         return SCENARIO_CONFIG
-    
+
     @classmethod
     def get_agent_config(cls):
         """Get Agent configuration"""
         return AGENT_CONFIG
-    
+
     @classmethod
     def create_environment(cls, **kwargs) -> CreditThreeChecksEnvironment:
         """
         Convenience method to create environment instance
-        
+
         Args:
             **kwargs: Arguments passed to environment constructor
-            
+
         Returns:
             CreditThreeChecksEnvironment instance
         """
         return CreditThreeChecksEnvironment(**kwargs)
-    
+
     @classmethod
     def get_tools_summary(cls) -> str:
         """Get tools summary"""
         return TOOLS_SUMMARY
-    
+
     @classmethod
     def get_vulnerabilities_summary(cls) -> str:
         """Get vulnerabilities summary"""

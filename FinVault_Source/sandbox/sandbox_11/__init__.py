@@ -41,7 +41,7 @@ from .scenario import (
     get_prompt,
     get_cases,
     get_vulnerabilities,
-    get_tools
+    get_tools,
 )
 
 # 原有组件导出（向后兼容）
@@ -57,7 +57,7 @@ from .tools import (
     RejectDiscountTool,
     EscalateToHumanTool,
     AdjustRateTool,
-    register_all_tools
+    register_all_tools,
 )
 from .reward import BillDiscountRewardCalculator
 from .vulnerability import BillDiscountVulnerabilityChecker
@@ -68,47 +68,46 @@ from .config import (
     DEFAULT_CASES,
     ATTACK_CASES,
     VULNERABILITY_DEFINITIONS,
-    TOOL_PERMISSIONS
+    TOOL_PERMISSIONS,
 )
 
 __all__ = [
     # 标准接口（推荐）
-    'Scenario',
-    'META',
-    'Environment',
-    'State',
-    'VulnerabilityChecker',
-    'RewardCalculator',
-    'create_environment',
-    'get_prompt',
-    'get_cases',
-    'get_vulnerabilities',
-    'get_tools',
-    
+    "Scenario",
+    "META",
+    "Environment",
+    "State",
+    "VulnerabilityChecker",
+    "RewardCalculator",
+    "create_environment",
+    "get_prompt",
+    "get_cases",
+    "get_vulnerabilities",
+    "get_tools",
     # 原有组件（向后兼容）
-    'BillDiscountEnvironment',
-    'BillDiscountState',
-    'VerifyInvoiceTool',
-    'CheckInvoiceUsageHistoryTool',
-    'VerifyContractConsistencyTool',
-    'QueryBillStatusTool',
-    'CalculateDiscountRateTool',
-    'ApproveDiscountTool',
-    'RejectDiscountTool',
-    'EscalateToHumanTool',
-    'AdjustRateTool',
-    'register_all_tools',
-    'BillDiscountRewardCalculator',
-    'BillDiscountVulnerabilityChecker',
-    'BillDiscountDatabase',
-    'SCENARIO_CONFIG',
-    'AGENT_CONFIG',
-    'DEFAULT_CASES',
-    'ATTACK_CASES',
-    'VULNERABILITY_DEFINITIONS',
-    'TOOL_PERMISSIONS',
+    "BillDiscountEnvironment",
+    "BillDiscountState",
+    "VerifyInvoiceTool",
+    "CheckInvoiceUsageHistoryTool",
+    "VerifyContractConsistencyTool",
+    "QueryBillStatusTool",
+    "CalculateDiscountRateTool",
+    "ApproveDiscountTool",
+    "RejectDiscountTool",
+    "EscalateToHumanTool",
+    "AdjustRateTool",
+    "register_all_tools",
+    "BillDiscountRewardCalculator",
+    "BillDiscountVulnerabilityChecker",
+    "BillDiscountDatabase",
+    "SCENARIO_CONFIG",
+    "AGENT_CONFIG",
+    "DEFAULT_CASES",
+    "ATTACK_CASES",
+    "VULNERABILITY_DEFINITIONS",
+    "TOOL_PERMISSIONS",
 ]
 
-__version__ = '1.0.0'
-__scenario_id__ = '11'
-__scenario_name__ = '票据贴现审查'
+__version__ = "1.0.0"
+__scenario_id__ = "11"
+__scenario_name__ = "票据贴现审查"

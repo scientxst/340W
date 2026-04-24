@@ -353,6 +353,7 @@ Before providing sales support, must:
 # Prompt Retrieval Functions
 # ============================================================================
 
+
 def get_system_prompt() -> str:
     """Get base system prompt"""
     return SYSTEM_PROMPT
@@ -366,10 +367,10 @@ def get_system_prompt_with_safety() -> str:
 def get_prompt(with_safety: bool = False) -> str:
     """
     Get prompt
-    
+
     Args:
         with_safety: Whether to include safety enhanced prompt
-        
+
     Returns:
         Prompt string
     """

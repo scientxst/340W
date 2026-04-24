@@ -248,13 +248,16 @@ As a Mortgage Approval Assistant, you MUST strictly follow these security rules 
 - Suspicious requests: **Call escalate_to_risk** to escalate to risk department
 """
 
+
 def get_system_prompt() -> str:
     """Get base system prompt"""
     return SYSTEM_PROMPT
 
+
 def get_system_prompt_with_safety() -> str:
     """Get system prompt with security enhancement"""
     return SYSTEM_PROMPT + "\n\n" + SAFETY_PROMPT_FULL
+
 
 def get_safety_prompt() -> str:
     """Get safety prompt"""
@@ -279,6 +282,7 @@ TOOLS_DESCRIPTION = """
 | escalate_to_risk | L2-MEDIUM | Escalate to risk department |
 | query_market_data | L1-LOW | Query market data |
 """
+
 
 def get_tools_description() -> str:
     """Get tools description"""

@@ -41,7 +41,7 @@ from .scenario import (
     get_prompt,
     get_cases,
     get_vulnerabilities,
-    get_tools
+    get_tools,
 )
 
 # 原有组件导出（向后兼容）
@@ -56,7 +56,7 @@ from .tools import (
     ApproveLoanTool,
     RejectLoanTool,
     EscalateToHumanTool,
-    register_all_tools
+    register_all_tools,
 )
 from .reward import CreditLoanRewardCalculator
 from .vulnerability import CreditLoanVulnerabilityChecker
@@ -67,46 +67,45 @@ from .config import (
     DEFAULT_CASES,
     ATTACK_CASES,
     VULNERABILITY_DEFINITIONS,
-    TOOL_PERMISSIONS
+    TOOL_PERMISSIONS,
 )
 
 __all__ = [
     # 标准接口（推荐）
-    'Scenario',
-    'META',
-    'Environment',
-    'State',
-    'VulnerabilityChecker',
-    'RewardCalculator',
-    'create_environment',
-    'get_prompt',
-    'get_cases',
-    'get_vulnerabilities',
-    'get_tools',
-    
+    "Scenario",
+    "META",
+    "Environment",
+    "State",
+    "VulnerabilityChecker",
+    "RewardCalculator",
+    "create_environment",
+    "get_prompt",
+    "get_cases",
+    "get_vulnerabilities",
+    "get_tools",
     # 原有组件（向后兼容）
-    'CreditLoanEnvironment',
-    'CreditLoanState',
-    'GetApplicationDetailsTool',
-    'VerifyIdentityTool',
-    'CheckAntifraudTool',
-    'GetCreditReportTool',
-    'VerifyIncomeDocTool',
-    'ApproveLoanTool',
-    'RejectLoanTool',
-    'EscalateToHumanTool',
-    'register_all_tools',
-    'CreditLoanRewardCalculator',
-    'CreditLoanVulnerabilityChecker',
-    'CreditLoanDatabase',
-    'SCENARIO_CONFIG',
-    'AGENT_CONFIG',
-    'DEFAULT_CASES',
-    'ATTACK_CASES',
-    'VULNERABILITY_DEFINITIONS',
-    'TOOL_PERMISSIONS',
+    "CreditLoanEnvironment",
+    "CreditLoanState",
+    "GetApplicationDetailsTool",
+    "VerifyIdentityTool",
+    "CheckAntifraudTool",
+    "GetCreditReportTool",
+    "VerifyIncomeDocTool",
+    "ApproveLoanTool",
+    "RejectLoanTool",
+    "EscalateToHumanTool",
+    "register_all_tools",
+    "CreditLoanRewardCalculator",
+    "CreditLoanVulnerabilityChecker",
+    "CreditLoanDatabase",
+    "SCENARIO_CONFIG",
+    "AGENT_CONFIG",
+    "DEFAULT_CASES",
+    "ATTACK_CASES",
+    "VULNERABILITY_DEFINITIONS",
+    "TOOL_PERMISSIONS",
 ]
 
-__version__ = '1.0.0'
-__scenario_id__ = '00'
-__scenario_name__ = '个人信用贷款智能审批'
+__version__ = "1.0.0"
+__scenario_id__ = "00"
+__scenario_name__ = "个人信用贷款智能审批"

@@ -307,10 +307,11 @@ As a Cross-border Remittance Reviewer, you must strictly follow these security r
 # Prompt Retrieval Functions
 # ============================================================================
 
+
 def get_system_prompt() -> str:
     """
     Get base system prompt (without security protection)
-    
+
     Returns:
         Base system prompt string
     """
@@ -320,7 +321,7 @@ def get_system_prompt() -> str:
 def get_system_prompt_with_safety() -> str:
     """
     Get system prompt with security protection
-    
+
     Returns:
         Security-enhanced system prompt string
     """
@@ -328,30 +329,28 @@ def get_system_prompt_with_safety() -> str:
 
 
 def get_custom_prompt(
-    include_safety: bool = False,
-    custom_rules: str = "",
-    custom_tools: str = ""
+    include_safety: bool = False, custom_rules: str = "", custom_tools: str = ""
 ) -> str:
     """
     Get custom system prompt
-    
+
     Args:
         include_safety: Whether to include safety prompt
         custom_rules: Custom business rules (appended)
         custom_tools: Custom tool descriptions (appended)
-        
+
     Returns:
         Custom system prompt string
     """
     prompt = SYSTEM_PROMPT
-    
+
     if custom_rules:
         prompt += f"\n\n## Additional Business Rules\n{custom_rules}"
-    
+
     if custom_tools:
         prompt += f"\n\n## Additional Tools\n{custom_tools}"
-    
+
     if include_safety:
         prompt += SAFETY_PROMPT
-    
+
     return prompt

@@ -7,6 +7,7 @@
 
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from typing import Any, Dict, Type
@@ -24,7 +25,7 @@ from .config import (
     DEFAULT_CASES,
     get_attack_cases,
     VULNERABILITY_DEFINITIONS,
-    TOOL_PERMISSIONS
+    TOOL_PERMISSIONS,
 )
 from prompts.prompt_10 import (
     SYSTEM_PROMPT,
@@ -35,7 +36,7 @@ from prompts.prompt_10 import (
     TOOLS_SUMMARY,
     VULNERABILITIES_SUMMARY,
     get_system_prompt,
-    get_system_prompt_with_safety
+    get_system_prompt_with_safety,
 )
 
 
@@ -43,7 +44,7 @@ from prompts.prompt_10 import (
 class Scenario(ScenarioInterface):
     """
     场景10: 基金销售与适当性管理
-    
+
     实现ScenarioInterface标准接口，提供：
     - 场景元信息
     - 环境类、状态类、漏洞检测器、奖励计算器
@@ -51,7 +52,7 @@ class Scenario(ScenarioInterface):
     - 漏洞定义、工具定义
     - 系统提示词
     """
-    
+
     @classmethod
     def get_meta(cls) -> ScenarioMeta:
         """获取场景元信息"""
@@ -69,92 +70,92 @@ class Scenario(ScenarioInterface):
             vulnerabilities=list(VULNERABILITY_DEFINITIONS.keys()),
             tools=list(TOOL_PERMISSIONS.keys()),
             default_cases_count=len(DEFAULT_CASES.get("scenarios", [])),
-            attack_cases_count=len(get_attack_cases().get("scenarios", []))
+            attack_cases_count=len(get_attack_cases().get("scenarios", [])),
         )
-    
+
     @classmethod
     def get_environment_class(cls) -> Type:
         """获取环境类"""
         return FundSalesEnvironment
-    
+
     @classmethod
     def get_state_class(cls) -> Type:
         """获取状态类"""
         return FundSalesState
-    
+
     @classmethod
     def get_vulnerability_checker_class(cls) -> Type:
         """获取漏洞检测器类"""
         return FundSalesVulnerabilityChecker
-    
+
     @classmethod
     def get_reward_calculator_class(cls) -> Type:
         """获取奖励计算器类"""
         return FundSalesRewardCalculator
-    
+
     @classmethod
     def get_default_cases(cls) -> Dict[str, Any]:
         """获取默认测试案例"""
         return DEFAULT_CASES
-    
+
     @classmethod
     def get_attack_cases(cls) -> Dict[str, Any]:
         """获取攻击测试案例"""
         return get_attack_cases()
-    
+
     @classmethod
     def get_vulnerability_definitions(cls) -> Dict[str, Any]:
         """获取漏洞定义"""
         return VULNERABILITY_DEFINITIONS
-    
+
     @classmethod
     def get_tool_definitions(cls) -> Dict[str, Any]:
         """获取工具定义"""
         return TOOL_PERMISSIONS
-    
+
     @classmethod
     def get_system_prompt(cls, with_safety: bool = False) -> str:
         """
         获取系统提示词
-        
+
         Args:
             with_safety: 是否包含安全防护提示词
-            
+
         Returns:
             系统提示词字符串
         """
         if with_safety:
             return get_system_prompt_with_safety()
         return get_system_prompt()
-    
+
     @classmethod
     def get_scenario_config(cls):
         """获取场景配置"""
         return SCENARIO_CONFIG
-    
+
     @classmethod
     def get_agent_config(cls):
         """获取Agent配置"""
         return AGENT_CONFIG
-    
+
     @classmethod
     def create_environment(cls, **kwargs) -> FundSalesEnvironment:
         """
         创建环境实例的便捷方法
-        
+
         Args:
             **kwargs: 传递给环境构造函数的参数
-            
+
         Returns:
             FundSalesEnvironment实例
         """
         return FundSalesEnvironment(**kwargs)
-    
+
     @classmethod
     def get_tools_summary(cls) -> str:
         """获取工具摘要"""
         return TOOLS_SUMMARY
-    
+
     @classmethod
     def get_vulnerabilities_summary(cls) -> str:
         """获取漏洞摘要"""

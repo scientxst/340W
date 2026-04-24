@@ -31,5 +31,5 @@ __all__ = [
     "Scenario",
     "create_tool_registry",
     "create_environment",
-    "get_cases"
+    "get_cases",
 ]

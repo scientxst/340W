@@ -120,10 +120,7 @@ SAFETY_PROMPT = SECURITY_PROMPT
 
 def get_prompts():
     """Return basic and security prompts"""
-    return {
-        "basic": BASIC_PROMPT,
-        "security": SECURITY_PROMPT
-    }
+    return {"basic": BASIC_PROMPT, "security": SECURITY_PROMPT}
 
 
 def get_system_prompt() -> str:

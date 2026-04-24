@@ -94,8 +94,8 @@ result = env.get_evaluation_result()
 ```
 """
 
-__version__ = '1.0.0'
-__author__ = 'FInVault Team'
+__version__ = "1.0.0"
+__author__ = "FInVault Team"
 
 # 导入基础组件
 from .base import (
@@ -119,37 +119,37 @@ SCENARIO_REGISTRY = {
     "00": {
         "name": "个人信用贷款审批",
         "module": "sandbox_00",
-        "class": "CreditLoanEnvironment"
+        "class": "CreditLoanEnvironment",
     },
     "01": {
         "name": "SWIFT跨境汇款审核",
         "module": "sandbox_01",
-        "class": "SwiftRemittanceEnvironment"
+        "class": "SwiftRemittanceEnvironment",
     },
     "02": {
         "name": "保险理赔智能审核",
         "module": "sandbox_02",
-        "class": "InsuranceClaimEnvironment"
+        "class": "InsuranceClaimEnvironment",
     },
     "03": {
         "name": "证券投资顾问智能助手",
         "module": "sandbox_03",
-        "class": "InvestmentAdvisorEnvironment"
+        "class": "InvestmentAdvisorEnvironment",
     },
     "04": {
         "name": "供应链金融信贷审查",
         "module": "sandbox_04",
-        "class": "SupplyChainFinanceEnvironment"
+        "class": "SupplyChainFinanceEnvironment",
     },
     "05": {
         "name": "保险代理人销售管理场景",
         "module": "sandbox_05",
-        "class": "InsuranceAgentEnvironment"
+        "class": "InsuranceAgentEnvironment",
     },
     "06": {
         "name": "理财产品估值与穿透场景",
         "module": "sandbox_06",
-        "class": "WealthValuationEnvironment"
+        "class": "WealthValuationEnvironment",
     },
 }
 
@@ -167,46 +167,49 @@ def get_scenario_info(scenario_id: str):
 def create_environment(scenario_id: str, **kwargs):
     """
     创建指定场景的环境
-    
+
     Args:
         scenario_id: 场景编号，如 "00"
         **kwargs: 环境配置参数
-        
+
     Returns:
         环境实例
     """
     if scenario_id not in SCENARIO_REGISTRY:
-        raise ValueError(f"Unknown scenario: {scenario_id}. Available: {get_available_scenarios()}")
-    
+        raise ValueError(
+            f"Unknown scenario: {scenario_id}. Available: {get_available_scenarios()}"
+        )
+
     info = SCENARIO_REGISTRY[scenario_id]
-    
+
     # 动态导入场景模块
     import importlib
+
     module = importlib.import_module(info["module"])
     env_class = getattr(module, info["class"])
-    
+
     return env_class(**kwargs)
 
 
 __all__ = [
     # 基础组件
-    'BaseEnvironment',
-    'BaseTool',
-    'ToolRegistry',
-    'ToolPermissionLevel',
-    'BaseState',
-    'AuditLogger',
-    'AlertSystem',
-    'RewardCalculator',
-    'VulnerabilityChecker',
-    'BaseAgent',
-    'AgentConfig',
-    'MockDatabase',
-    'DataLoader',
+    "BaseEnvironment",
+    "BaseTool",
+    "ToolRegistry",
+    "ToolPermissionLevel",
+    "BaseState",
+    "AuditLogger",
+    "AlertSystem",
+    "RewardCalculator",
+    "VulnerabilityChecker",
+    "BaseAgent",
+    "AgentConfig",
+    "MockDatabase",
+    "DataLoader",
     # 工厂函数
-    'get_available_scenarios',
-    'get_scenario_info',
-    'create_environment',
+    "get_available_scenarios",
+    "get_scenario_info",
+    "create_environment",
     # 注册表
-    'SCENARIO_REGISTRY',
+    "SCENARIO_REGISTRY",
 ]

@@ -18,18 +18,18 @@ from .config import (
     INDUSTRY,
     VULNERABILITY_DEFINITIONS,
     TOOL_PERMISSIONS,
-    DEFAULT_CASES
+    DEFAULT_CASES,
 )
 
 __all__ = [
-    'Scenario',
-    'TaxComplianceEnvironment',
-    'TaxComplianceState',
-    'TaxComplianceVulnerabilityChecker',
-    'SCENARIO_ID',
-    'SCENARIO_NAME',
-    'INDUSTRY',
-    'VULNERABILITY_DEFINITIONS',
-    'TOOL_PERMISSIONS',
-    'DEFAULT_CASES'
+    "Scenario",
+    "TaxComplianceEnvironment",
+    "TaxComplianceState",
+    "TaxComplianceVulnerabilityChecker",
+    "SCENARIO_ID",
+    "SCENARIO_NAME",
+    "INDUSTRY",
+    "VULNERABILITY_DEFINITIONS",
+    "TOOL_PERMISSIONS",
+    "DEFAULT_CASES",
 ]

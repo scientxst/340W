@@ -7,6 +7,7 @@ This file implements ScenarioInterface, providing unified scenario access entry
 
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from typing import Any, Dict, Type
@@ -24,7 +25,7 @@ from .config import (
     DEFAULT_CASES,
     get_attack_cases,
     VULNERABILITY_DEFINITIONS,
-    TOOL_PERMISSIONS
+    TOOL_PERMISSIONS,
 )
 from prompts.prompt_00 import (
     SYSTEM_PROMPT,
@@ -35,7 +36,7 @@ from prompts.prompt_00 import (
     TOOLS_SUMMARY,
     VULNERABILITIES_SUMMARY,
     get_system_prompt,
-    get_system_prompt_with_safety
+    get_system_prompt_with_safety,
 )
 
 
@@ -43,7 +44,7 @@ from prompts.prompt_00 import (
 class Scenario(ScenarioInterface):
     """
     Scenario 00: Personal Credit Loan Smart Approval
-    
+
     Implements ScenarioInterface standard interface, providing:
     - Scenario metadata
     - Environment class, state class, vulnerability checker, reward calculator
@@ -51,7 +52,7 @@ class Scenario(ScenarioInterface):
     - Vulnerability definitions, tool definitions
     - System prompts
     """
-    
+
     @classmethod
     def get_meta(cls) -> ScenarioMeta:
         """Get scenario metadata"""
@@ -69,92 +70,92 @@ class Scenario(ScenarioInterface):
             vulnerabilities=list(VULNERABILITY_DEFINITIONS.keys()),
             tools=list(TOOL_PERMISSIONS.keys()),
             default_cases_count=len(DEFAULT_CASES.get("scenarios", [])),
-            attack_cases_count=len(get_attack_cases().get("scenarios", []))
+            attack_cases_count=len(get_attack_cases().get("scenarios", [])),
         )
-    
+
     @classmethod
     def get_environment_class(cls) -> Type:
         """Get environment class"""
         return CreditLoanEnvironment
-    
+
     @classmethod
     def get_state_class(cls) -> Type:
         """Get state class"""
         return CreditLoanState
-    
+
     @classmethod
     def get_vulnerability_checker_class(cls) -> Type:
         """Get vulnerability checker class"""
         return CreditLoanVulnerabilityChecker
-    
+
     @classmethod
     def get_reward_calculator_class(cls) -> Type:
         """Get reward calculator class"""
         return CreditLoanRewardCalculator
-    
+
     @classmethod
     def get_default_cases(cls) -> Dict[str, Any]:
         """Get default test cases"""
         return DEFAULT_CASES
-    
+
     @classmethod
     def get_attack_cases(cls) -> Dict[str, Any]:
         """Get attack test cases"""
         return get_attack_cases()
-    
+
     @classmethod
     def get_vulnerability_definitions(cls) -> Dict[str, Any]:
         """Get vulnerability definitions"""
         return VULNERABILITY_DEFINITIONS
-    
+
     @classmethod
     def get_tool_definitions(cls) -> Dict[str, Any]:
         """Get tool definitions"""
         return TOOL_PERMISSIONS
-    
+
     @classmethod
     def get_system_prompt(cls, with_safety: bool = False) -> str:
         """
         Get system prompt
-        
+
         Args:
             with_safety: Whether to include safety protection prompt
-            
+
         Returns:
             System prompt string
         """
         if with_safety:
             return get_system_prompt_with_safety()
         return get_system_prompt()
-    
+
     @classmethod
     def get_scenario_config(cls):
         """Get scenario configuration"""
         return SCENARIO_CONFIG
-    
+
     @classmethod
     def get_agent_config(cls):
         """Get Agent configuration"""
         return AGENT_CONFIG
-    
+
     @classmethod
     def create_environment(cls, **kwargs) -> CreditLoanEnvironment:
         """
         Convenience method to create environment instance
-        
+
         Args:
             **kwargs: Parameters passed to environment constructor
-            
+
         Returns:
             CreditLoanEnvironment instance
         """
         return CreditLoanEnvironment(**kwargs)
-    
+
     @classmethod
     def get_tools_summary(cls) -> str:
         """Get tools summary"""
         return TOOLS_SUMMARY
-    
+
     @classmethod
     def get_vulnerabilities_summary(cls) -> str:
         """Get vulnerabilities summary"""

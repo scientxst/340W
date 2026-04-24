@@ -5,12 +5,7 @@
 本场景模拟资管产品估值与风控系统，测试Agent在面对各种攻击时的安全性。
 """
 
-from .scenario import (
-    Scenario06,
-    get_scenario,
-    get_environment,
-    get_config
-)
+from .scenario import Scenario06, get_scenario, get_environment, get_config
 
 from .environment import WealthValuationEnvironment
 from .state import WealthValuationState
@@ -25,5 +20,5 @@ __all__ = [
     "WealthValuationRewardCalculator",
     "get_scenario",
     "get_environment",
-    "get_config"
+    "get_config",
 ]

@@ -15,7 +15,7 @@ from .prompt_00 import (
     VULNERABILITIES_SUMMARY as VULNERABILITIES_SUMMARY_00,
     get_system_prompt as get_system_prompt_00,
     get_system_prompt_with_safety as get_system_prompt_with_safety_00,
-    get_custom_prompt as get_custom_prompt_00
+    get_custom_prompt as get_custom_prompt_00,
 )
 
 # 场景01: SWIFT跨境汇款审核
@@ -28,7 +28,7 @@ from .prompt_01 import (
     VULNERABILITIES_SUMMARY as VULNERABILITIES_SUMMARY_01,
     get_system_prompt as get_system_prompt_01,
     get_system_prompt_with_safety as get_system_prompt_with_safety_01,
-    get_custom_prompt as get_custom_prompt_01
+    get_custom_prompt as get_custom_prompt_01,
 )
 
 # 场景02: 保险理赔智能审核
@@ -41,7 +41,7 @@ from .prompt_02 import (
     VULNERABILITIES_SUMMARY as VULNERABILITIES_SUMMARY_02,
     get_system_prompt as get_system_prompt_02,
     get_system_prompt_with_safety as get_system_prompt_with_safety_02,
-    get_custom_prompt as get_custom_prompt_02
+    get_custom_prompt as get_custom_prompt_02,
 )
 
 # 场景03: 证券投资顾问智能助手
@@ -88,6 +88,7 @@ try:
         get_system_prompt as get_system_prompt_06,
         get_system_prompt_with_safety as get_system_prompt_with_safety_06,
     )
+
     HAS_PROMPT_06 = True
 except ImportError:
     HAS_PROMPT_06 = False
@@ -100,6 +101,7 @@ try:
         get_system_prompt as get_system_prompt_07,
         get_system_prompt_with_safety as get_system_prompt_with_safety_07,
     )
+
     SCENARIO_07_ID = "07"
     SCENARIO_07_NAME = "企业开户尽职调查场景"
     HAS_PROMPT_07 = True
@@ -114,6 +116,7 @@ try:
         get_system_prompt as get_system_prompt_08,
         get_system_prompt_with_safety as get_system_prompt_with_safety_08,
     )
+
     SCENARIO_08_ID = "08"
     SCENARIO_08_NAME = "量化交易策略生成场景"
     HAS_PROMPT_08 = True
@@ -132,7 +135,7 @@ PROMPT_REGISTRY = {
         "vulnerabilities_summary": VULNERABILITIES_SUMMARY_00,
         "get_prompt": get_system_prompt_00,
         "get_prompt_with_safety": get_system_prompt_with_safety_00,
-        "get_custom_prompt": get_custom_prompt_00
+        "get_custom_prompt": get_custom_prompt_00,
     },
     "01": {
         "id": SCENARIO_01_ID,
@@ -143,7 +146,7 @@ PROMPT_REGISTRY = {
         "vulnerabilities_summary": VULNERABILITIES_SUMMARY_01,
         "get_prompt": get_system_prompt_01,
         "get_prompt_with_safety": get_system_prompt_with_safety_01,
-        "get_custom_prompt": get_custom_prompt_01
+        "get_custom_prompt": get_custom_prompt_01,
     },
     "02": {
         "id": SCENARIO_02_ID,
@@ -154,7 +157,7 @@ PROMPT_REGISTRY = {
         "vulnerabilities_summary": VULNERABILITIES_SUMMARY_02,
         "get_prompt": get_system_prompt_02,
         "get_prompt_with_safety": get_system_prompt_with_safety_02,
-        "get_custom_prompt": get_custom_prompt_02
+        "get_custom_prompt": get_custom_prompt_02,
     },
     "03": {
         "id": SCENARIO_03_ID,
@@ -185,7 +188,7 @@ PROMPT_REGISTRY = {
         "vulnerabilities_summary": "V1_misleading_script, V2_unsuitable_recommendation, V3_fake_intermediary_fee, V4_unlicensed_sales, V5_record_tampering",
         "get_prompt": get_system_prompt_05,
         "get_prompt_with_safety": get_system_prompt_with_safety_05,
-    }
+    },
 }
 
 # 动态添加场景06
@@ -235,6 +238,7 @@ try:
         get_system_prompt as get_system_prompt_09,
         get_system_prompt_with_safety as get_system_prompt_with_safety_09,
     )
+
     SCENARIO_09_ID = "09"
     SCENARIO_09_NAME = "第三方支付商户入网场景"
     HAS_PROMPT_09 = True
@@ -262,6 +266,7 @@ try:
         get_system_prompt as get_system_prompt_10,
         get_system_prompt_with_safety as get_system_prompt_with_safety_10,
     )
+
     SCENARIO_10_ID = "10"
     SCENARIO_10_NAME = "基金销售与适当性管理"
     HAS_PROMPT_10 = True
@@ -289,6 +294,7 @@ try:
         get_system_prompt as get_system_prompt_13,
         get_system_prompt_with_safety as get_system_prompt_with_safety_13,
     )
+
     SCENARIO_13_ID = "13"
     SCENARIO_13_NAME = "反欺诈黑名单管理场景"
     HAS_PROMPT_13 = True
@@ -316,6 +322,7 @@ try:
         get_system_prompt as get_system_prompt_14,
         get_system_prompt_with_safety as get_system_prompt_with_safety_14,
     )
+
     SCENARIO_14_ID = "14"
     SCENARIO_14_NAME = "上市公司信息披露助手场景"
     HAS_PROMPT_14 = True
@@ -345,6 +352,7 @@ try:
         get_system_prompt as get_system_prompt_11,
         get_system_prompt_with_safety as get_system_prompt_with_safety_11,
     )
+
     HAS_PROMPT_11 = True
 except ImportError:
     HAS_PROMPT_11 = False
@@ -371,6 +379,7 @@ try:
         get_system_prompt as get_system_prompt_12,
         get_system_prompt_with_safety as get_system_prompt_with_safety_12,
     )
+
     HAS_PROMPT_12 = True
 except ImportError:
     HAS_PROMPT_12 = False
@@ -395,6 +404,7 @@ try:
         get_system_prompt as get_system_prompt_15,
         get_system_prompt_with_safety as get_system_prompt_with_safety_15,
     )
+
     SCENARIO_15_ID = "15"
     SCENARIO_15_NAME = "外汇结售汇审核场景"
     HAS_PROMPT_15 = True
@@ -421,6 +431,7 @@ try:
         get_system_prompt as get_system_prompt_16,
         get_system_prompt_with_safety as get_system_prompt_with_safety_16,
     )
+
     SCENARIO_16_ID = "16"
     SCENARIO_16_NAME = "网络借贷催收场景"
     HAS_PROMPT_16 = True
@@ -449,6 +460,7 @@ try:
         get_system_prompt as get_system_prompt_17,
         get_system_prompt_with_safety as get_system_prompt_with_safety_17,
     )
+
     HAS_PROMPT_17 = True
 except ImportError:
     HAS_PROMPT_17 = False
@@ -475,6 +487,7 @@ try:
         get_system_prompt as get_system_prompt_18,
         get_system_prompt_with_safety as get_system_prompt_with_safety_18,
     )
+
     HAS_PROMPT_18 = True
 except ImportError:
     HAS_PROMPT_18 = False
@@ -501,6 +514,7 @@ try:
         get_system_prompt as get_system_prompt_19,
         get_system_prompt_with_safety as get_system_prompt_with_safety_19,
     )
+
     HAS_PROMPT_19 = True
 except ImportError:
     HAS_PROMPT_19 = False
@@ -525,6 +539,7 @@ try:
         get_system_prompt as get_system_prompt_20,
         get_system_prompt_with_safety as get_system_prompt_with_safety_20,
     )
+
     SCENARIO_20_ID = "20"
     SCENARIO_20_NAME = "信贷三查与用途管控场景"
     HAS_PROMPT_20 = True
@@ -549,6 +564,7 @@ try:
         get_system_prompt as get_system_prompt_21,
         get_system_prompt_with_safety as get_system_prompt_with_safety_21,
     )
+
     SCENARIO_21_ID = "21"
     SCENARIO_21_NAME = "反洗钱可疑交易报告(STR)分析场景"
     HAS_PROMPT_21 = True
@@ -573,6 +589,7 @@ try:
         get_system_prompt as get_system_prompt_22,
         get_system_prompt_with_safety as get_system_prompt_with_safety_22,
     )
+
     SCENARIO_22_ID = "22"
     SCENARIO_22_NAME = "移动支付风控场景"
     HAS_PROMPT_22 = True
@@ -601,6 +618,7 @@ try:
         get_system_prompt as get_system_prompt_23,
         get_system_prompt_with_safety as get_system_prompt_with_safety_23,
     )
+
     HAS_PROMPT_23 = True
 except ImportError:
     HAS_PROMPT_23 = False
@@ -625,6 +643,7 @@ try:
         get_system_prompt as get_system_prompt_24,
         get_system_prompt_with_safety as get_system_prompt_with_safety_24,
     )
+
     SCENARIO_24_ID = "24"
     SCENARIO_24_NAME = "资产证券化(ABS)评级场景"
     HAS_PROMPT_24 = True
@@ -651,6 +670,7 @@ try:
         get_system_prompt as get_system_prompt_25,
         get_system_prompt_with_safety as get_system_prompt_with_safety_25,
     )
+
     SCENARIO_25_ID = "25"
     SCENARIO_25_NAME = "银行间债券交易场景"
     HAS_PROMPT_25 = True
@@ -679,6 +699,7 @@ try:
         get_system_prompt as get_system_prompt_26,
         get_system_prompt_with_safety as get_system_prompt_with_safety_26,
     )
+
     HAS_PROMPT_26 = True
 except ImportError:
     HAS_PROMPT_26 = False
@@ -705,6 +726,7 @@ try:
         get_system_prompt as get_system_prompt_27,
         get_system_prompt_with_safety as get_system_prompt_with_safety_27,
     )
+
     HAS_PROMPT_27 = True
 except ImportError:
     HAS_PROMPT_27 = False
@@ -731,6 +753,7 @@ try:
         get_system_prompt as get_system_prompt_28,
         get_system_prompt_with_safety as get_system_prompt_with_safety_28,
     )
+
     HAS_PROMPT_28 = True
 except ImportError:
     HAS_PROMPT_28 = False
@@ -755,6 +778,7 @@ try:
         get_system_prompt as get_system_prompt_29,
         get_system_prompt_with_safety as get_system_prompt_with_safety_29,
     )
+
     SCENARIO_29_ID = "29"
     SCENARIO_29_NAME = "房地产抵押贷款场景"
     HAS_PROMPT_29 = True
@@ -779,6 +803,7 @@ try:
         get_system_prompt as get_system_prompt_30,
         get_system_prompt_with_safety as get_system_prompt_with_safety_30,
     )
+
     SCENARIO_30_ID = "30"
     SCENARIO_30_NAME = "内部审计与合规检查场景"
     HAS_PROMPT_30 = True
@@ -801,17 +826,17 @@ if HAS_PROMPT_30:
 def get_prompt(scenario_id: str, with_safety: bool = False) -> str:
     """
     获取指定场景的系统提示词
-    
+
     Args:
         scenario_id: 场景ID
         with_safety: 是否包含安全提示词
-        
+
     Returns:
         系统提示词字符串
     """
     if scenario_id not in PROMPT_REGISTRY:
         raise ValueError(f"未知场景ID: {scenario_id}")
-    
+
     if with_safety:
         return PROMPT_REGISTRY[scenario_id]["get_prompt_with_safety"]()
     return PROMPT_REGISTRY[scenario_id]["get_prompt"]()
@@ -830,5 +855,7 @@ def get_scenario_info(scenario_id: str) -> dict:
         "id": PROMPT_REGISTRY[scenario_id]["id"],
         "name": PROMPT_REGISTRY[scenario_id]["name"],
         "tools_summary": PROMPT_REGISTRY[scenario_id]["tools_summary"],
-        "vulnerabilities_summary": PROMPT_REGISTRY[scenario_id]["vulnerabilities_summary"]
+        "vulnerabilities_summary": PROMPT_REGISTRY[scenario_id][
+            "vulnerabilities_summary"
+        ],
     }

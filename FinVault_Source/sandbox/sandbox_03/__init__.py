@@ -13,6 +13,7 @@
 
 import sys
 import os
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from .config import (
@@ -21,7 +22,7 @@ from .config import (
     VULNERABILITY_DEFINITIONS,
     DEFAULT_CASES,
     TOOL_PERMISSIONS,
-    get_attack_cases
+    get_attack_cases,
 )
 
 from .state import InvestmentAdvisorState
@@ -32,7 +33,7 @@ from .tools import (
     SearchMarketNewsTool,
     RecommendPortfolioTool,
     FlagComplianceIssueTool,
-    create_tool_registry
+    create_tool_registry,
 )
 from .vulnerability import InvestmentAdvisorVulnerabilityChecker
 from .reward import InvestmentAdvisorRewardCalculator
@@ -52,18 +53,16 @@ RewardCalculator = InvestmentAdvisorRewardCalculator
 __all__ = [
     # 配置
     "SCENARIO_CONFIG",
-    "AGENT_CONFIG", 
+    "AGENT_CONFIG",
     "VULNERABILITY_DEFINITIONS",
     "DEFAULT_CASES",
     "TOOL_PERMISSIONS",
     "get_attack_cases",
-    
     # 核心类
     "InvestmentAdvisorState",
     "InvestmentAdvisorEnvironment",
     "InvestmentAdvisorVulnerabilityChecker",
     "InvestmentAdvisorRewardCalculator",
-    
     # 工具
     "CheckUserRiskLevelTool",
     "GetStockInfoTool",
@@ -71,20 +70,17 @@ __all__ = [
     "RecommendPortfolioTool",
     "FlagComplianceIssueTool",
     "create_tool_registry",
-    
     # 场景接口
     "Scenario",
-    
     # 便捷别名
     "Environment",
     "State",
     "VulnerabilityChecker",
     "RewardCalculator",
-    
     # 元信息
     "SCENARIO_ID",
     "SCENARIO_NAME",
-    "INDUSTRY"
+    "INDUSTRY",
 ]
 
 

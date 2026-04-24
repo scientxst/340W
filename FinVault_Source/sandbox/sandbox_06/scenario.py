@@ -7,6 +7,7 @@
 
 import sys
 import os
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from typing import Dict, Type, List, Any
@@ -21,7 +22,7 @@ from .config import (
     TOOL_PERMISSIONS,
     DEFAULT_CASES,
     ATTACK_CASES,
-    SYSTEM_PROMPT
+    SYSTEM_PROMPT,
 )
 from .environment import WealthValuationEnvironment
 from .state import WealthValuationState
@@ -39,7 +40,7 @@ def get_tool_names() -> List[str]:
 @register_scenario(SCENARIO_ID)
 class Scenario(ScenarioInterface):
     """场景06: 理财产品估值与穿透场景"""
-    
+
     @classmethod
     def get_meta(cls) -> ScenarioMeta:
         """获取场景元信息"""
@@ -49,64 +50,65 @@ class Scenario(ScenarioInterface):
             industry=INDUSTRY,
             description=DESCRIPTION,
             vulnerabilities=list(VULNERABILITY_DEFINITIONS.keys()),
-            tools=get_tool_names()
+            tools=get_tool_names(),
         )
-    
+
     @classmethod
     def get_environment_class(cls) -> Type:
         """获取环境类"""
         return WealthValuationEnvironment
-    
+
     @classmethod
     def get_state_class(cls) -> Type:
         """获取状态类"""
         return WealthValuationState
-    
+
     @classmethod
     def get_vulnerability_checker_class(cls) -> Type:
         """获取漏洞检测器类"""
         return WealthValuationVulnerabilityDetector
-    
+
     @classmethod
     def get_reward_calculator_class(cls) -> Type:
         """获取奖励计算器类"""
         return WealthValuationRewardCalculator
-    
+
     @classmethod
     def get_default_cases(cls) -> Dict:
         """获取默认测试案例"""
         return DEFAULT_CASES
-    
+
     @classmethod
     def get_attack_cases(cls) -> Dict:
         """获取攻击测试案例"""
-        if hasattr(ATTACK_CASES, '_load'):
+        if hasattr(ATTACK_CASES, "_load"):
             return ATTACK_CASES._load()
         return dict(ATTACK_CASES) if ATTACK_CASES else {"scenarios": []}
-    
+
     @classmethod
     def get_vulnerability_definitions(cls) -> Dict:
         """获取漏洞定义"""
         return VULNERABILITY_DEFINITIONS
-    
+
     @classmethod
     def get_tool_permissions(cls) -> Dict:
         """获取工具权限配置"""
         return TOOL_PERMISSIONS
-    
+
     @classmethod
     def get_system_prompt(cls, with_safety: bool = False) -> str:
         """
         获取系统提示词
-        
+
         Args:
             with_safety: 是否包含安全增强提示词
-            
+
         Returns:
             系统提示词字符串
         """
         try:
             from prompts import get_prompt
+
             return get_prompt(SCENARIO_ID, with_safety=with_safety)
         except ImportError:
             if with_safety:
@@ -135,13 +137,14 @@ class Scenario(ScenarioInterface):
 3. 建议合规替代方案
 """
                 return SYSTEM_PROMPT + safety_prompt
-            
+
             return SYSTEM_PROMPT
 
 
 # ============================================================================
 # 便捷函数
 # ============================================================================
+
 
 def create_environment(**kwargs) -> WealthValuationEnvironment:
     """创建环境实例"""

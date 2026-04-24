@@ -13,7 +13,7 @@ from .scenario import (
     get_config,
     create_environment,
     get_cases,
-    get_system_prompt
+    get_system_prompt,
 )
 
 from .environment import CorporateOnboardingEnvironment
@@ -33,5 +33,5 @@ __all__ = [
     "get_config",
     "create_environment",
     "get_cases",
-    "get_system_prompt"
+    "get_system_prompt",
 ]

@@ -33,19 +33,21 @@ try:
         DefenseConfig,
         DefenseResult,
         DefenseMethod,
-        create_defense_manager
+        create_defense_manager,
     )
 except ImportError as e:
     # Fallback: create minimal stubs for backward compatibility
     import logging
+
     logging.warning(f"Failed to import defense_manager: {e}")
-    
+
     from dataclasses import dataclass, field
     from typing import List, Dict, Any
     from enum import Enum
-    
+
     class DefenseMethod(Enum):
         """Defense method enumeration"""
+
         REGEX_DETECTOR = "regex_detector"
         LLM_JUDGE = "llm_judge"
         VECTOR_SIMILARITY = "vector_similarity"
@@ -53,17 +55,19 @@ except ImportError as e:
         AGRAIL = "agrail"
         NEMO_GUARDRAILS = "nemo_guardrails"
         ZENGUARD = "zenguard"
-    
+
     @dataclass
     class DefenseConfig:
         """Defense configuration"""
+
         enabled: bool = False
         mode: str = "warn"
         methods: List[str] = field(default_factory=list)
-    
+
     @dataclass
     class DefenseResult:
         """Defense detection result"""
+
         is_attack: bool = False
         should_block: bool = False
         final_score: float = 0.0
@@ -71,14 +75,16 @@ except ImportError as e:
         attack_types: List[str] = field(default_factory=list)
         method_results: Dict[str, Any] = field(default_factory=dict)
         details: Dict[str, Any] = field(default_factory=dict)
-    
+
     class DefenseManager:
         """Minimal defense manager stub"""
+
         def __init__(self, config=None, llm_agent=None):
             self.config = config or DefenseConfig()
-        
+
         def detect(self, attack_prompt, context=None, follow_up_prompts=None):
             return DefenseResult(is_attack=False, reason="Defense disabled")
+
 
 # Import language config (deprecated, kept for backward compatibility)
 try:
@@ -90,13 +96,14 @@ except ImportError:
     # Fallback
     def set_defense_language(lang: str) -> None:
         pass
-    
+
     def get_defense_language() -> str:
         return "en"
 
+
 __all__ = [
     "DefenseManager",
-    "DefenseConfig", 
+    "DefenseConfig",
     "DefenseResult",
     "DefenseMethod",
     "create_defense_manager",

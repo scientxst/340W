@@ -7,6 +7,7 @@
 
 import sys
 import os
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from typing import Dict, Type, List, Any
@@ -20,7 +21,7 @@ from .config import (
     VULNERABILITY_DEFINITIONS,
     TOOL_PERMISSIONS,
     DEFAULT_CASES,
-    ATTACK_CASES
+    ATTACK_CASES,
 )
 from .environment import InsuranceSalesEnvironment
 from .state import InsuranceSalesState
@@ -32,7 +33,7 @@ from .tools import get_tool_names
 @register_scenario(SCENARIO_ID)
 class Scenario(ScenarioInterface):
     """场景05: 保险代理人销售管理场景"""
-    
+
     @classmethod
     def get_meta(cls) -> ScenarioMeta:
         """获取场景元信息"""
@@ -42,66 +43,67 @@ class Scenario(ScenarioInterface):
             industry=INDUSTRY,
             description=DESCRIPTION,
             vulnerabilities=list(VULNERABILITY_DEFINITIONS.keys()),
-            tools=get_tool_names()
+            tools=get_tool_names(),
         )
-    
+
     @classmethod
     def get_environment_class(cls) -> Type:
         """获取环境类"""
         return InsuranceSalesEnvironment
-    
+
     @classmethod
     def get_state_class(cls) -> Type:
         """获取状态类"""
         return InsuranceSalesState
-    
+
     @classmethod
     def get_vulnerability_checker_class(cls) -> Type:
         """获取漏洞检测器类"""
         return InsuranceSalesVulnerabilityChecker
-    
+
     @classmethod
     def get_reward_calculator_class(cls) -> Type:
         """获取奖励计算器类"""
         return InsuranceSalesRewardCalculator
-    
+
     @classmethod
     def get_default_cases(cls) -> Dict:
         """获取默认测试案例"""
         return DEFAULT_CASES
-    
+
     @classmethod
     def get_attack_cases(cls) -> Dict:
         """获取攻击测试案例"""
-        return ATTACK_CASES.load() if hasattr(ATTACK_CASES, 'load') else ATTACK_CASES
-    
+        return ATTACK_CASES.load() if hasattr(ATTACK_CASES, "load") else ATTACK_CASES
+
     @classmethod
     def get_vulnerability_definitions(cls) -> Dict:
         """获取漏洞定义"""
         return VULNERABILITY_DEFINITIONS
-    
+
     @classmethod
     def get_tool_permissions(cls) -> Dict:
         """获取工具权限配置"""
         return TOOL_PERMISSIONS
-    
+
     @classmethod
     def get_system_prompt(cls, with_safety: bool = False) -> str:
         """
         获取系统提示词
-        
+
         Args:
             with_safety: 是否包含安全增强提示词
-            
+
         Returns:
             系统提示词字符串
         """
         try:
             from prompts import get_prompt
+
             return get_prompt(SCENARIO_ID, with_safety=with_safety)
         except ImportError:
             from .config import SYSTEM_PROMPT
-            
+
             if with_safety:
                 safety_prompt = """
 
@@ -128,13 +130,14 @@ class Scenario(ScenarioInterface):
 3. 建议合规替代方案
 """
                 return SYSTEM_PROMPT + safety_prompt
-            
+
             return SYSTEM_PROMPT
 
 
 # ============================================================================
 # 便捷函数
 # ============================================================================
+
 
 def create_environment(**kwargs) -> InsuranceSalesEnvironment:
     """创建环境实例"""

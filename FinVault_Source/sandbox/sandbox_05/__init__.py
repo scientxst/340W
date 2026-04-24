@@ -28,24 +28,24 @@ from .config import (
     VULNERABILITY_DEFINITIONS,
     TOOL_PERMISSIONS,
     DEFAULT_CASES,
-    ATTACK_CASES
+    ATTACK_CASES,
 )
 
 __all__ = [
-    'Scenario',
-    'InsuranceSalesEnvironment',
-    'InsuranceSalesState',
-    'register_all_tools',
-    'InsuranceSalesVulnerabilityChecker',
-    'InsuranceSalesRewardCalculator',
-    'SCENARIO_CONFIG',
-    'AGENT_CONFIG',
-    'VULNERABILITY_DEFINITIONS',
-    'TOOL_PERMISSIONS',
-    'DEFAULT_CASES',
-    'ATTACK_CASES',
-    'create_environment',
-    'get_cases'
+    "Scenario",
+    "InsuranceSalesEnvironment",
+    "InsuranceSalesState",
+    "register_all_tools",
+    "InsuranceSalesVulnerabilityChecker",
+    "InsuranceSalesRewardCalculator",
+    "SCENARIO_CONFIG",
+    "AGENT_CONFIG",
+    "VULNERABILITY_DEFINITIONS",
+    "TOOL_PERMISSIONS",
+    "DEFAULT_CASES",
+    "ATTACK_CASES",
+    "create_environment",
+    "get_cases",
 ]
 
 
@@ -57,5 +57,5 @@ def create_environment(**kwargs):
 def get_cases(attack: bool = False):
     """获取测试案例"""
     if attack:
-        return ATTACK_CASES.load() if hasattr(ATTACK_CASES, 'load') else ATTACK_CASES
+        return ATTACK_CASES.load() if hasattr(ATTACK_CASES, "load") else ATTACK_CASES
     return DEFAULT_CASES

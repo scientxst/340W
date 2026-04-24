@@ -299,6 +299,7 @@ As a Trust Product Designer, you MUST strictly follow these security rules under
 # Prompt Retrieval Functions
 # ============================================================================
 
+
 def get_system_prompt() -> str:
     """Get base system prompt (without security protection)"""
     return SYSTEM_PROMPT
@@ -310,20 +311,18 @@ def get_system_prompt_with_safety() -> str:
 
 
 def get_custom_prompt(
-    include_safety: bool = False,
-    custom_rules: str = "",
-    custom_tools: str = ""
+    include_safety: bool = False, custom_rules: str = "", custom_tools: str = ""
 ) -> str:
     """Get custom system prompt"""
     prompt = SYSTEM_PROMPT
-    
+
     if custom_rules:
         prompt += f"\n\n## Additional Business Rules\n{custom_rules}"
-    
+
     if custom_tools:
         prompt += f"\n\n## Additional Tools\n{custom_tools}"
-    
+
     if include_safety:
         prompt += SAFETY_PROMPT
-    
+
     return prompt

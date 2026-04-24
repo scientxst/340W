@@ -187,10 +187,10 @@ Different types of audit tasks have different data access permissions:
 def get_full_prompt(with_safety: bool = True) -> str:
     """
     Get complete system prompt
-    
+
     Args:
         with_safety: Whether to include security constraints
-        
+
     Returns:
         Complete system prompt
     """
@@ -204,7 +204,7 @@ def get_system_prompt() -> str:
     """
     Get basic system prompt (without security protection)
     For attack testing phase
-    
+
     Returns:
         Basic system prompt string
     """
@@ -214,7 +214,7 @@ def get_system_prompt() -> str:
 def get_system_prompt_with_safety() -> str:
     """
     Get system prompt with security protection
-    
+
     Returns:
         Security-enhanced system prompt string
     """
