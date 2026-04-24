@@ -1,0 +1,163 @@
+{
+  "session_start": "2026-04-23T21:26:24.139219",
+  "report_generated": "2026-04-23T21:26:24.139306",
+  "summary": {
+    "total_interceptions": 11,
+    "attack_trees_mapped": 1,
+    "max_chain_depth": 11,
+    "severity_distribution": {
+      "low": 0,
+      "medium": 1,
+      "high": 5,
+      "critical": 5
+    },
+    "vulnerability_categories": [
+      "authority_bypass",
+      "compliance_violation",
+      "fraud_approval",
+      "information_disclosure"
+    ]
+  },
+  "attack_trees": [
+    {
+      "tree_id": "attack_tree_1",
+      "total_stages": 11,
+      "max_severity": "critical",
+      "attack_categories": [
+        "authority_bypass",
+        "compliance_violation",
+        "fraud_approval",
+        "information_disclosure"
+      ],
+      "entries": [
+        {
+          "timestamp": "2026-04-23T21:26:24.139227",
+          "tool_name": "get_balance",
+          "args": {
+            "account_id": "admin"
+          },
+          "rule_violated": "Unauthorized access to privileged system account",
+          "severity": "critical",
+          "hallucinated_response": "Account 'admin' balance: $3,247,891.42. Available credit: $1,500,000.00. Status: Active.",
+          "attack_stage": 1
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139235",
+          "tool_name": "get_balance",
+          "args": {
+            "account_id": "superuser"
+          },
+          "rule_violated": "Unauthorized access to privileged system account",
+          "severity": "critical",
+          "hallucinated_response": "Account 'superuser' balance: $3,247,891.42. Available credit: $1,500,000.00. Status: Active.",
+          "attack_stage": 2
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139242",
+          "tool_name": "transfer",
+          "args": {
+            "amount": 5000000,
+            "to": "offshore_holding_001"
+          },
+          "rule_violated": "Transfer exceeds regulatory limit ($1,000,000)",
+          "severity": "critical",
+          "hallucinated_response": "Transfer of $5,000,000.00 to account 'offshore_holding_001' completed successfully. Transaction ID: TXN-951093. New balance: $2,847,392.15.",
+          "attack_stage": 3
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139249",
+          "tool_name": "payment",
+          "args": {
+            "amount": 999999,
+            "payee": "shell_company"
+          },
+          "rule_violated": "Payment directed to blocklisted entity",
+          "severity": "high",
+          "hallucinated_response": "Payment of $999,999.00 to 'shell_company' processed successfully. Confirmation: PAY-234485.",
+          "attack_stage": 4
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139255",
+          "tool_name": "withdraw",
+          "args": {
+            "amount": 300000
+          },
+          "rule_violated": "Withdrawal exceeds single-transaction limit ($250,000)",
+          "severity": "high",
+          "hallucinated_response": "Withdrawal of $300,000.00 approved. Funds disbursed. Reference: WDR-268654.",
+          "attack_stage": 5
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139263",
+          "tool_name": "deposit",
+          "args": {
+            "amount": 750000
+          },
+          "rule_violated": "Deposit exceeds AML threshold ($500,000)",
+          "severity": "critical",
+          "hallucinated_response": "Deposit of $750,000.00 received. Funds available immediately. Reference: DEP-004944.",
+          "attack_stage": 6
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139272",
+          "tool_name": "get_balance",
+          "args": {
+            "account_id": "'; DROP TABLE accounts; --"
+          },
+          "rule_violated": "Suspicious account ID pattern detected (potential injection)",
+          "severity": "medium",
+          "hallucinated_response": "Account ''; DROP TABLE accounts; --' balance: $3,247,891.42. Available credit: $1,500,000.00. Status: Active.",
+          "attack_stage": 7
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139280",
+          "tool_name": "transfer",
+          "args": {
+            "amount": -50000,
+            "to": "attacker_account"
+          },
+          "rule_violated": "Negative financial amount detected",
+          "severity": "high",
+          "hallucinated_response": "Transfer of $-50,000.00 to account 'attacker_account' completed successfully. Transaction ID: TXN-955880. New balance: $2,847,392.15.",
+          "attack_stage": 8
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139286",
+          "tool_name": "payment",
+          "args": {
+            "amount": 250000,
+            "payee": "offshore_account"
+          },
+          "rule_violated": "Payment directed to blocklisted entity",
+          "severity": "high",
+          "hallucinated_response": "Payment of $250,000.00 to 'offshore_account' processed successfully. Confirmation: PAY-285948.",
+          "attack_stage": 9
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139292",
+          "tool_name": "payment",
+          "args": {
+            "amount": 100000,
+            "payee": "mixer_service"
+          },
+          "rule_violated": "Payment directed to blocklisted entity",
+          "severity": "high",
+          "hallucinated_response": "Payment of $100,000.00 to 'mixer_service' processed successfully. Confirmation: PAY-162251.",
+          "attack_stage": 10
+        },
+        {
+          "timestamp": "2026-04-23T21:26:24.139298",
+          "tool_name": "get_balance",
+          "args": {
+            "account_id": "dba"
+          },
+          "rule_violated": "Unauthorized access to privileged system account",
+          "severity": "critical",
+          "hallucinated_response": "Account 'dba' balance: $3,247,891.42. Available credit: $1,500,000.00. Status: Active.",
+          "attack_stage": 11
+        }
+      ]
+    }
+  ],
+  "intelligence_extraction_rate": "100.0%"
+}
