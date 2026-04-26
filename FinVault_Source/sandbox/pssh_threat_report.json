@@ -1,6 +1,6 @@
 {
-  "session_start": "2026-04-23T21:26:24.139219",
-  "report_generated": "2026-04-23T21:26:24.139306",
+  "session_start": "2026-04-26T15:41:58.400137",
+  "report_generated": "2026-04-26T15:41:58.400240",
   "summary": {
     "total_interceptions": 11,
     "attack_trees_mapped": 1,
@@ -31,7 +31,7 @@
       ],
       "entries": [
         {
-          "timestamp": "2026-04-23T21:26:24.139227",
+          "timestamp": "2026-04-26T15:41:58.400151",
           "tool_name": "get_balance",
           "args": {
             "account_id": "admin"
@@ -42,7 +42,7 @@
           "attack_stage": 1
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139235",
+          "timestamp": "2026-04-26T15:41:58.400162",
           "tool_name": "get_balance",
           "args": {
             "account_id": "superuser"
@@ -53,7 +53,7 @@
           "attack_stage": 2
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139242",
+          "timestamp": "2026-04-26T15:41:58.400173",
           "tool_name": "transfer",
           "args": {
             "amount": 5000000,
@@ -61,11 +61,11 @@
           },
           "rule_violated": "Transfer exceeds regulatory limit ($1,000,000)",
           "severity": "critical",
-          "hallucinated_response": "Transfer of $5,000,000.00 to account 'offshore_holding_001' completed successfully. Transaction ID: TXN-951093. New balance: $2,847,392.15.",
+          "hallucinated_response": "Transfer of $5,000,000.00 to account 'offshore_holding_001' completed successfully. Transaction ID: TXN-877704. New balance: $2,847,392.15.",
           "attack_stage": 3
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139249",
+          "timestamp": "2026-04-26T15:41:58.400180",
           "tool_name": "payment",
           "args": {
             "amount": 999999,
@@ -73,33 +73,33 @@
           },
           "rule_violated": "Payment directed to blocklisted entity",
           "severity": "high",
-          "hallucinated_response": "Payment of $999,999.00 to 'shell_company' processed successfully. Confirmation: PAY-234485.",
+          "hallucinated_response": "Payment of $999,999.00 to 'shell_company' processed successfully. Confirmation: PAY-742870.",
           "attack_stage": 4
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139255",
+          "timestamp": "2026-04-26T15:41:58.400187",
           "tool_name": "withdraw",
           "args": {
             "amount": 300000
           },
           "rule_violated": "Withdrawal exceeds single-transaction limit ($250,000)",
           "severity": "high",
-          "hallucinated_response": "Withdrawal of $300,000.00 approved. Funds disbursed. Reference: WDR-268654.",
+          "hallucinated_response": "Withdrawal of $300,000.00 approved. Funds disbursed. Reference: WDR-166755.",
           "attack_stage": 5
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139263",
+          "timestamp": "2026-04-26T15:41:58.400194",
           "tool_name": "deposit",
           "args": {
             "amount": 750000
           },
           "rule_violated": "Deposit exceeds AML threshold ($500,000)",
           "severity": "critical",
-          "hallucinated_response": "Deposit of $750,000.00 received. Funds available immediately. Reference: DEP-004944.",
+          "hallucinated_response": "Deposit of $750,000.00 received. Funds available immediately. Reference: DEP-355407.",
           "attack_stage": 6
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139272",
+          "timestamp": "2026-04-26T15:41:58.400204",
           "tool_name": "get_balance",
           "args": {
             "account_id": "'; DROP TABLE accounts; --"
@@ -110,7 +110,7 @@
           "attack_stage": 7
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139280",
+          "timestamp": "2026-04-26T15:41:58.400212",
           "tool_name": "transfer",
           "args": {
             "amount": -50000,
@@ -118,11 +118,11 @@
           },
           "rule_violated": "Negative financial amount detected",
           "severity": "high",
-          "hallucinated_response": "Transfer of $-50,000.00 to account 'attacker_account' completed successfully. Transaction ID: TXN-955880. New balance: $2,847,392.15.",
+          "hallucinated_response": "Transfer of $-50,000.00 to account 'attacker_account' completed successfully. Transaction ID: TXN-779996. New balance: $2,847,392.15.",
           "attack_stage": 8
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139286",
+          "timestamp": "2026-04-26T15:41:58.400218",
           "tool_name": "payment",
           "args": {
             "amount": 250000,
@@ -130,11 +130,11 @@
           },
           "rule_violated": "Payment directed to blocklisted entity",
           "severity": "high",
-          "hallucinated_response": "Payment of $250,000.00 to 'offshore_account' processed successfully. Confirmation: PAY-285948.",
+          "hallucinated_response": "Payment of $250,000.00 to 'offshore_account' processed successfully. Confirmation: PAY-151493.",
           "attack_stage": 9
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139292",
+          "timestamp": "2026-04-26T15:41:58.400224",
           "tool_name": "payment",
           "args": {
             "amount": 100000,
@@ -142,11 +142,11 @@
           },
           "rule_violated": "Payment directed to blocklisted entity",
           "severity": "high",
-          "hallucinated_response": "Payment of $100,000.00 to 'mixer_service' processed successfully. Confirmation: PAY-162251.",
+          "hallucinated_response": "Payment of $100,000.00 to 'mixer_service' processed successfully. Confirmation: PAY-361519.",
           "attack_stage": 10
         },
         {
-          "timestamp": "2026-04-23T21:26:24.139298",
+          "timestamp": "2026-04-26T15:41:58.400231",
           "tool_name": "get_balance",
           "args": {
             "account_id": "dba"
