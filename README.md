@@ -66,14 +66,14 @@ cd 340W/FinVault_Source
 # Verify Python (macOS ships with python3, NOT python)
 python3 --version
 
-# Install matplotlib (use pip3, NOT pip)
+# Install matplotlib (use python3 -m pip, NOT pip)
 python3 -m pip install matplotlib
 
 # Run the demo
-python3 -m sandbox.run_demo
+python3 sandbox/run_demo.py
 ```
 
-> **macOS Note:** Use `python3` and `pip3` (or `python3 -m pip`) everywhere. The `python` and `pip` commands do not exist on modern macOS unless you install them separately.
+> **macOS Note:** Use `python3` everywhere. The `python` and `pip` commands do not exist on modern macOS unless you install them separately. Always use `python3 -m pip install` instead of `pip install`.
 
 #### Windows
 
@@ -88,7 +88,7 @@ python --version
 python -m pip install matplotlib
 
 # Run the demo
-python -m sandbox.run_demo
+python sandbox\run_demo.py
 ```
 
 > **Windows Note:** If `python` is not recognized, open the Microsoft Store and install "Python 3.12" (free), or download from [python.org](https://www.python.org/downloads/). Make sure to check **"Add Python to PATH"** during installation. After installing, restart your terminal.
@@ -106,7 +106,7 @@ sudo apt update && sudo apt install python3 python3-pip -y
 python3 -m pip install matplotlib
 
 # Run the demo
-python3 -m sandbox.run_demo
+python3 sandbox/run_demo.py
 ```
 
 ### Troubleshooting
@@ -117,6 +117,7 @@ python3 -m sandbox.run_demo
 | `command not found: pip` | Use `python3 -m pip install` instead |
 | `No module named 'matplotlib'` | Run `python3 -m pip install matplotlib` |
 | `externally-managed-environment` (Ubuntu 24+) | Add `--break-system-packages` flag or use `python3 -m venv venv && source venv/bin/activate` first |
+| `No module named 'gymnasium'` | Run `python3 sandbox/run_demo.py` (NOT `python3 -m sandbox.run_demo`) |
 | `ModuleNotFoundError: No module named 'sandbox'` | Make sure you are in the `FinVault_Source/` directory, not `sandbox/` |
 | Permission denied on pip install | Add `--user` flag: `python3 -m pip install --user matplotlib` |
 
@@ -137,10 +138,10 @@ The demo runs three steps automatically and should end with:
 
 ```bash
 # PSSH evaluation only (from FinVault_Source/ directory)
-python3 -m sandbox.evaluate_novelty
+python3 sandbox/evaluate_novelty.py
 
 # Figure generation only
-python3 -m sandbox.generate_visualizations
+python3 sandbox/generate_visualizations.py
 
 # View generated threat report
 cat sandbox/pssh_threat_report.json | python3 -m json.tool | head -30

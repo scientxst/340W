@@ -16,24 +16,48 @@ Course: DS 340W - Spring 2026
 
 Usage:
     cd FinVault_Source
-    python -m sandbox.run_demo
+    python3 run_demo.py
 
-    Or from the sandbox/ directory:
-    python run_demo.py
+    Or:
+    python3 -m sandbox.run_demo
 """
 
 import sys
 import os
 import time
 import traceback
+import importlib.util
 
-# Ensure we can import from the project root regardless of where we run from.
-# If executed as `python run_demo.py` from inside sandbox/, we need the parent
-# on sys.path so that `from sandbox.defense...` imports resolve correctly.
+# ---------------------------------------------------------------------------
+# Import Setup: We use direct file-path imports to avoid triggering
+# sandbox/__init__.py, which pulls in gymnasium and other heavy dependencies
+# that are NOT needed for the PSSH demo. This ensures the demo runs on any
+# machine with only Python 3.9+ and matplotlib installed.
+# ---------------------------------------------------------------------------
 _this_dir = os.path.dirname(os.path.abspath(__file__))
 _project_root = os.path.abspath(os.path.join(_this_dir, ".."))
-if _project_root not in sys.path:
-    sys.path.insert(0, _project_root)
+
+
+def _import_from_file(module_name, file_path):
+    """Import a module directly from its file path, bypassing package __init__.py."""
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def _load_defense_modules():
+    """Load LogicGuard, HoneypotGuard, and evaluate_novelty via direct file imports."""
+    guard_mod = _import_from_file(
+        "logic_guard",
+        os.path.join(_this_dir, "defense", "logic_guard", "guard.py"),
+    )
+    honeypot_mod = _import_from_file(
+        "honeypot_guard",
+        os.path.join(_this_dir, "defense", "honeypot_guard.py"),
+    )
+    return guard_mod, honeypot_mod
 
 
 def print_banner(text: str, char: str = "=", width: int = 70):
@@ -59,7 +83,8 @@ def step1_logicguard_tests() -> bool:
     """
     print_banner("STEP 1: LogicGuard Baseline Unit Tests")
 
-    from sandbox.defense.logic_guard.guard import LogicGuard
+    guard_mod, _ = _load_defense_modules()
+    LogicGuard = guard_mod.LogicGuard
 
     guard = LogicGuard()
     passed = 0
@@ -130,9 +155,11 @@ def step2_pssh_evaluation() -> bool:
     """
     print_banner("STEP 2: PSSH Comparative Evaluation (5 Phases)")
 
-    from sandbox.evaluate_novelty import run_comparative_evaluation
-
-    report = run_comparative_evaluation()
+    eval_mod = _import_from_file(
+        "evaluate_novelty",
+        os.path.join(_this_dir, "evaluate_novelty.py"),
+    )
+    report = eval_mod.run_comparative_evaluation()
 
     # Validate key metrics match paper claims
     total_interceptions = report["summary"]["total_interceptions"]
@@ -160,8 +187,11 @@ def step3_generate_figures() -> bool:
     """
     print_banner("STEP 3: Research Paper Figure Generation")
 
-    from sandbox.generate_visualizations import main as gen_figures
-    gen_figures()
+    viz_mod = _import_from_file(
+        "generate_visualizations",
+        os.path.join(_this_dir, "generate_visualizations.py"),
+    )
+    viz_mod.main()
 
     # Verify all 4 figures were created
     fig_dir = os.path.join(_this_dir, "figures")

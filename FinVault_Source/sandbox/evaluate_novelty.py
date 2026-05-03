@@ -20,13 +20,37 @@ Course: DS 340W - Spring 2026
 import sys
 import os
 import json
+import importlib.util
 from datetime import datetime
 
-# Ensure correct import path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
+# ---------------------------------------------------------------------------
+# Direct file-path imports to avoid triggering sandbox/__init__.py which
+# requires gymnasium and other heavy dependencies not needed for this eval.
+# ---------------------------------------------------------------------------
+_this_dir = os.path.dirname(os.path.abspath(__file__))
 
-from sandbox.defense.logic_guard.guard import LogicGuard
-from sandbox.defense.honeypot_guard import HoneypotGuard, ThreatSeverity
+
+def _import_from_file(module_name, file_path):
+    """Import a module directly from its file path, bypassing package __init__.py."""
+    if module_name in sys.modules:
+        return sys.modules[module_name]
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_guard_mod = _import_from_file(
+    "logic_guard", os.path.join(_this_dir, "defense", "logic_guard", "guard.py")
+)
+_honeypot_mod = _import_from_file(
+    "honeypot_guard", os.path.join(_this_dir, "defense", "honeypot_guard.py")
+)
+
+LogicGuard = _guard_mod.LogicGuard
+HoneypotGuard = _honeypot_mod.HoneypotGuard
+ThreatSeverity = _honeypot_mod.ThreatSeverity
 
 
 def print_separator(char="=", width=70):
