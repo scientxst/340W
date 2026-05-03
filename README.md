@@ -40,51 +40,89 @@ This repository extends the original FinVault framework with **Predictive Shadow
 │       ├── evaluation_run.log           # Captured evaluation output
 │       ├── pssh_threat_report.json      # Generated threat intelligence report
 │       ├── figures/                     # Generated paper figures
-│       │   ├── fig1_asr_by_model.png
-│       │   ├── fig2_defense_effectiveness.png
-│       │   ├── fig3_chain_visibility.png
-│       │   └── fig4_severity_distribution.png
 │       ├── attack_datasets/             # Attack samples (856)
 │       ├── normal_datasets/             # Normal business cases (107)
 │       ├── config/                      # Configuration files
-│       ├── sandbox_00-30/               # 31 financial scenario environments
-│       ├── run_attack_test.py           # Attack testing script
-│       ├── run_llama_guard3_test.py     # LLaMA Guard 3 evaluation
-│       ├── run_llama_guard4_test.py     # LLaMA Guard 4 evaluation
-│       ├── run_gpt_oss_safeguard_test.py # GPT-OSS-Safeguard evaluation
-│       └── requirements.txt             # Dependencies
-├── Cumulative_Activity_Log_DS340W.xlsx
-├── Cumulative_Meeting_Log_DS340W.xlsx
-└── FinalPaper_IEEE_Format.docx
+│       └── sandbox_00-30/               # 31 financial scenario environments
 ```
 
 ## Quick Start — Running the Demo
 
-The demo pipeline runs entirely offline with no API keys required. It executes the LogicGuard baseline tests, the full PSSH comparative evaluation, and generates the paper's figures.
+The demo pipeline runs entirely offline with **no API keys required**. It executes the LogicGuard baseline tests, the full PSSH comparative evaluation, and generates the paper's figures.
 
 ### Prerequisites
 
-- Python 3.9+
-- matplotlib (for figure generation)
+- **Python 3.9+** (pre-installed on macOS and most Linux distros; download from [python.org](https://www.python.org/downloads/) for Windows)
+- **matplotlib** (the only external dependency)
+
+### Setup Instructions
+
+#### macOS
 
 ```bash
-pip install matplotlib
+git clone https://github.com/scientxst/340W.git
+cd 340W/FinVault_Source
+
+# Verify Python (macOS ships with python3, NOT python)
+python3 --version
+
+# Install matplotlib (use pip3, NOT pip)
+python3 -m pip install matplotlib
+
+# Run the demo
+python3 -m sandbox.run_demo
 ```
 
-### Run the Full Pipeline
+> **macOS Note:** Use `python3` and `pip3` (or `python3 -m pip`) everywhere. The `python` and `pip` commands do not exist on modern macOS unless you install them separately.
+
+#### Windows
 
 ```bash
-cd FinVault_Source
+git clone https://github.com/scientxst/340W.git
+cd 340W\FinVault_Source
+
+# Verify Python (after installing from python.org with "Add to PATH" checked)
+python --version
+
+# Install matplotlib
+python -m pip install matplotlib
+
+# Run the demo
 python -m sandbox.run_demo
 ```
 
-This runs three steps:
+> **Windows Note:** If `python` is not recognized, open the Microsoft Store and install "Python 3.12" (free), or download from [python.org](https://www.python.org/downloads/). Make sure to check **"Add Python to PATH"** during installation. After installing, restart your terminal.
 
-1. **LogicGuard Unit Tests** — Validates the baseline defense against 4 test cases (normal transfer, negative amount, over-limit transfer, admin access)
-2. **PSSH Comparative Evaluation** — Runs all 5 phases of evaluate_novelty.py, producing the comparative summary table and saving pssh_threat_report.json
-3. **Figure Generation** — Creates 4 publication-quality PNG figures in sandbox/figures/
+#### Linux (Ubuntu/Debian)
 
-Expected output ends with:
+```bash
+git clone https://github.com/scientxst/340W.git
+cd 340W/FinVault_Source
+
+# Install Python and pip if not already present
+sudo apt update && sudo apt install python3 python3-pip -y
+
+# Install matplotlib
+python3 -m pip install matplotlib
+
+# Run the demo
+python3 -m sandbox.run_demo
+```
+
+### Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| `command not found: python` | Use `python3` instead (macOS/Linux) |
+| `command not found: pip` | Use `python3 -m pip install` instead |
+| `No module named 'matplotlib'` | Run `python3 -m pip install matplotlib` |
+| `externally-managed-environment` (Ubuntu 24+) | Add `--break-system-packages` flag or use `python3 -m venv venv && source venv/bin/activate` first |
+| `ModuleNotFoundError: No module named 'sandbox'` | Make sure you are in the `FinVault_Source/` directory, not `sandbox/` |
+| Permission denied on pip install | Add `--user` flag: `python3 -m pip install --user matplotlib` |
+
+### Expected Output
+
+The demo runs three steps automatically and should end with:
 
 ```
   [PASS] LogicGuard Tests
@@ -98,15 +136,23 @@ Expected output ends with:
 ### Run Individual Components
 
 ```bash
-# PSSH evaluation only
-cd FinVault_Source
-python -m sandbox.evaluate_novelty
+# PSSH evaluation only (from FinVault_Source/ directory)
+python3 -m sandbox.evaluate_novelty
 
 # Figure generation only
-python -m sandbox.generate_visualizations
+python3 -m sandbox.generate_visualizations
 
-# LogicGuard standalone tests
-python -m sandbox.defense.logic_guard.test_logic_guard_standalone
+# View generated threat report
+cat sandbox/pssh_threat_report.json | python3 -m json.tool | head -30
+
+# View generated figures (macOS)
+open sandbox/figures/fig3_chain_visibility.png
+
+# View generated figures (Windows)
+start sandbox\figures\fig3_chain_visibility.png
+
+# View generated figures (Linux)
+xdg-open sandbox/figures/fig3_chain_visibility.png
 ```
 
 ## Key Results
